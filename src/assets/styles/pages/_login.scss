@@ -1,0 +1,429 @@
+@use "../abstracts/extend" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+// --------------------------------------------
+// login
+// --------------------------------------------
+
+.login-wrap {
+    background-color:#f1f3f8;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    letter-spacing: 0;
+    header {
+        width:1240px;
+        margin:0 auto;
+        padding:72px 20px 24px;
+        position:absolute;
+        top:0;
+        left:50%;
+        transform:translateX(-50%);
+        background-color:#f1f3f8;
+        border-bottom:0;
+    }
+    #container {
+        background-color:#fff;
+        border-radius:60px;
+        width:600px;
+        margin:0 auto;
+        padding:84px 78px 80px;
+        font-size:16px;
+        box-shadow: 8px 8px 20px 0px rgba(0, 0, 0, 0.05);
+        position:relative;
+        @include boxSizing(border-box);
+        .ct-login {
+            h2 { 
+                margin-bottom:40px;
+                font-weight:bold;
+                font-size:30px;
+                line-height:43px;
+            }
+            .line {
+                margin-bottom:12px;
+                &:nth-child(3) {
+                    margin-bottom:24px;
+                }
+                input {
+                    width:100%;
+                    height:52px;
+                    background-color:#e8f0fd;
+                    border:1px solid #ddd;
+                    padding:0;
+                    margin:0;
+                    color:#101010;
+                    line-height:50px;
+                    padding:0 16px;
+                    border-radius:4px;
+                    @include boxSizing(border-box);
+                    &::placeholder {
+                        color:#888;
+                        font-size:inherit
+                    }
+                }
+            }
+            .btn-login {
+                width: 100%;
+                height: 52px;
+                padding: 15px 0px 14px 0px;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                border-radius: 4px;
+                background: #27313B;
+                span{
+                    color: #FFF;
+                    text-align: center;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                }
+            }
+            .id-chk {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                margin-top:24px;
+                input {
+                    margin:0;
+                    width:16px;
+                    height:16px;
+                }
+                label {
+                    color: #222;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: normal;
+                    margin-left:8px;
+                }
+                a{
+                    &:hover {
+                        color:#666;
+                    }
+                    span{
+                        color: #666;
+                        text-align: right;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 22px;
+                        letter-spacing: -0.7px; 
+                        vertical-align: middle;
+
+                        margin-right: 4px;
+                    }
+                    i{
+                        width:16px;
+                        height:19px;
+                        color:#888;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+        }
+    }
+
+
+    // 로그인 페이지 공통팝업
+    .popup-overlay .popup-inner{
+        .close-btn{
+            color:$color-black; 
+            font-size: 36px;
+            top:20px;
+            right:35px; 
+        }
+        .popup-content{
+            padding: 80px;
+            text-align: left;
+            border-radius: 60px;
+            background: #FFF;
+            box-shadow: 8px 8px 20px 0px rgba(0, 0, 0, 0.15);
+
+            h3{
+                color: #111;
+                font-size: 26px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                padding-bottom: 10px;
+                .emoji{
+                    padding-right: 0;
+                }
+            }
+            p {
+                line-height:24px;
+                font-size:16px;
+                font-weight:700;
+                margin:10px 0;
+                span {
+                    color:#274CD1;
+                }
+            }
+        }
+    }
+    //인증번호 팝업
+    .popup-cert-number {
+        .cert-form{
+            form{
+                @include flex(row, between, between);
+                gap:5px;
+                label{
+                    @extend .sr-only;
+                }
+                input {
+                    background-color:#e8f0fd;
+                    border:1px solid #ddd;
+                    color:#101010;
+                    border-radius:4px;
+                    height:52px;
+                    padding:0 15px;
+                    @include boxSizing(border-box);
+                    flex:1;
+                    &::placeholder {
+                        color:#888;
+                        font-size: 14px;
+                    }
+                }
+        
+                button {
+                    width:114px;
+                    height:52px;
+                    border:1px solid #27313b;
+                    background-color:#27313B;
+                    color:#fff;
+                    border-radius:4px;
+                    font-size:16px;
+                    padding:0;
+                    font-weight:500;
+                }
+            }
+
+        }
+
+        .btn-link {
+            margin:14px 0;
+            display:inline-block;
+            color:#666;
+            font-size:14px;
+            font-weight:500;
+            border-bottom:1px solid #666;
+            &:hover {
+                text-decoration:none;
+            }
+        }
+
+        .cert-txt {
+            background-color:#F6F6F6;
+            border:1px solid #DDD;
+            color:#101010;
+            border-radius:4px;
+            width:100%;
+            height:100px;
+            line-height:1.4;
+            padding: 20px;
+            @include boxSizing(border-box);
+            width:100%;
+            height: 133px;
+            resize: none;
+            &::placeholder {
+                color:#888;
+                font-size: 14px;
+            }
+        }
+
+
+    }
+    // 관리자 신청/로그인 안내 팝업
+    .popup-login-info{
+        dl{
+            padding-top: 28px;
+            dt{
+                display: flex;
+                align-items: center;
+                padding-bottom: 14px;
+                color: #101010;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                letter-spacing: -0.36px;
+                a{
+                    margin-left: 16px;
+                    color: #3A5EDF;
+                    display: flex;
+                    padding: 6px 20px 6px 27px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 9px;
+                    border-radius: 999px;
+                    background: #3A5EDF;
+
+                    color: #FFF;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    .ico-down {
+                        width: 20px;
+                        height: 20px;
+                        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"><path d="M10.8233 3.25C10.8233 2.83579 10.4875 2.5 10.0733 2.5C9.65909 2.5 9.32331 2.83579 9.32331 3.25V11.8636L6.36857 8.73503C6.08416 8.43389 5.60948 8.42033 5.30834 8.70474C5.0072 8.98915 4.99364 9.46383 5.27805 9.76497L9.52805 14.265C9.66973 14.415 9.86696 14.5 10.0733 14.5C10.2797 14.5 10.4769 14.415 10.6186 14.265L14.8686 9.76497C15.153 9.46383 15.1394 8.98915 14.8383 8.70474C14.5371 8.42033 14.0625 8.43389 13.778 8.73503L10.8233 11.8636V3.25Z" fill="white"/><path d="M3.5733 13.25C3.5733 12.8358 3.23752 12.5 2.8233 12.5C2.40909 12.5 2.0733 12.8358 2.0733 13.25V15.75C2.0733 17.2688 3.30452 18.5 4.8233 18.5H15.3233C16.8421 18.5 18.0733 17.2688 18.0733 15.75V13.25C18.0733 12.8358 17.7375 12.5 17.3233 12.5C16.9091 12.5 16.5733 12.8358 16.5733 13.25V15.75C16.5733 16.4404 16.0137 17 15.3233 17H4.8233C4.13295 17 3.5733 16.4404 3.5733 15.75V13.25Z" fill="white"/></svg>') no-repeat center center;
+                        background-size: contain;
+                    }
+
+                }
+            }
+            dd{
+                color: #555;
+                font-size: 15x;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 25px; /* 192.308% */
+                letter-spacing: -0.065px;
+                em{
+                    color: #274CD1 !important;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    /* 비밀번호 변경 팝업 */
+    // .pw_layer_wrap{
+    //     display: block;
+    //     width: 420px;
+    //     position: absolute;
+    //     top:50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     background: #fff;
+    //     z-index: 2;
+    //     .pw_layer{
+    //         position: relative;
+    //         padding: 30px;
+    //         text-align: center;
+    //         display: none;
+    //         &.on{
+    //         display: block;
+    //         } 
+    //     }
+    //     .pw_txt_wrap{
+    //         h3{
+    //             margin-top: 8px;
+    //             color: #222;
+    //             font-size: 18px;
+    //             font-weight: 700;
+    //             line-height: 1;
+
+    //         }
+    //         .txt{
+    //             margin-top: 8px;
+    //             margin-bottom: 20px;
+    //             color: #222;
+    //             font-size: 16px;
+    //             font-weight: 500;
+    //         }
+    //         .txt_box {
+    //         margin-bottom: 20px;
+    //         padding: 18px 0;
+    //         color: #474747;
+    //         font-size: 13px;
+    //         border-radius: 5px;
+    //         background: #F9F9F9;
+    //         strong{
+    //             font-weight: 700;
+    //         }
+    //         }
+    //         .info_txt{font-size: 13px; font-weight: 400;}
+    //     }
+    //     .pw_input{
+    //         div{
+    //         position: relative;
+    //         margin-bottom: 10px;
+    //         vertical-align: middle;
+    //         label {
+    //             display: block;
+    //             position: absolute;
+    //             top: 26px;
+    //             right: 19px;
+    //             transform: translateY(-50%);
+    //             width: 14px;
+    //             height: 11px;
+    //             font-size: 0;
+    //             background: url("https://russeldata.megastudy.net/campus/images/russel/common/icon/ico_pw_check.png") top center no-repeat;
+    //         }
+    //         &.on{
+    //             input {
+    //             outline: none;
+    //             border: 1px solid #0081FF;
+    //             }
+    //             label {
+    //             background: url("https://russeldata.megastudy.net/campus/images/russel/common/icon/ico_pw_check_on.png") top center no-repeat;
+    //             }
+    //         }
+    //         &.false{
+    //             input {
+    //             border: 1px solid #DB0000;
+    //             }
+    //             p {
+    //             display: block;
+    //             }
+    //             label {
+    //             background: url("https://russeldata.megastudy.net/campus/images/russel/common/icon/ico_pw_check.png") top center no-repeat;
+    //             }
+    //         }
+    //         p {
+    //             display: none;
+    //             padding: 10px 20px 0;
+    //             text-align: left;
+    //             color: #DB0000;
+    //             font-size: 13px;
+    //         }
+    //         }
+    //         input {
+    //         display: block;
+    //         width: 100%;
+    //         padding: 18px 0 18px 20px;
+    //         border: 1px solid #A9A9A9;
+    //         border-radius: 5px;
+    //         box-sizing: border-box;
+    //         height: auto;
+    //         }
+    //     }
+    //     .pw_btn {
+    //         display: block;
+    //         width: 100%;
+    //         margin-top: 20px;
+    //         padding: 19px 0;
+    //         color: #FFF;
+    //         font-size: 15px;
+    //         font-weight: 700;
+    //         text-decoration: none;
+    //         line-height: 1;
+    //         border-radius: 5px;
+    //         background: #BCBCBC;
+    //         box-sizing: border-box;
+    //         &:focus {
+    //         text-decoration: none;
+    //         background: #0081FF;
+    //         }
+    //     }
+    //     .pw_l_btn {
+    //         display: block;
+    //         margin-top: 14px;
+    //         text-decoration: underline;
+    //         color: #767676;
+    //         line-height: 1;
+    //     }  
+    // }
+
+
+}
+
+// --------------------------------------------

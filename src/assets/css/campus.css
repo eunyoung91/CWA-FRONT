@@ -1,0 +1,68 @@
+
+#ulAttach li
+{
+	border:1px solid #DDDDDD;
+	width:98%;
+	margin-bottom:5px;
+}
+#ulAttach li div
+{
+	padding:10px;
+}
+#ulAttach li div .spnRename
+{
+	display:none;
+}
+#ulAttach li div.dvInfo
+{
+	border-top:1px solid #DDDDDD;
+	display:none;
+}
+
+#bbsStudy #ulAttach li div .spnRename
+{
+	display:inline !important;
+}
+#bbsStudy #ulAttach li div.dvInfo
+{
+	display:block !important;
+}
+div.list
+{
+	overflow:hidden;
+	zoom:1;
+	min-height:20px;
+	border-top: 1px solid #DDDDDD;
+	width:500px;
+	padding:10px 0px;
+}
+div.first
+{
+	border:0px none !important;
+}
+div.campus
+{
+	float:left;
+	font-weight:bolder;
+	width:120px;
+	overflow:hidden;
+	padding-top:5px;
+}
+
+div.campus b
+{
+	color:#0000FF;
+	float:left;
+}
+
+div.campus span
+{
+	float:right;
+	color:#BBBBBB;
+
+}
+div.path
+{
+	float:left;
+	padding-left:20px;
+}

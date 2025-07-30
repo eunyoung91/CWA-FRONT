@@ -1,0 +1,120 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+// --------------------------------------------
+// Utilities
+// --------------------------------------------
+
+// ----------------------------------------
+// margin
+// ----------------------------------------
+@include generate-margin-top(0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+@include generate-margin-bottom(0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+
+// ----------------------------------------
+// padding
+// ----------------------------------------
+@include generate-padding(0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80);
+
+// ----------------------------------------
+// font size
+// ----------------------------------------
+@include generate-font-size(12, 14, 16, 18, 20, 24, 32);
+
+// ----------------------------------------
+// width
+// ----------------------------------------
+@include generate-width(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300);
+
+
+// ✅ Border Utilities
+.bln { border-left: none !important; }
+.brn { border-right: none !important; }
+
+.taL { text-align: left !important; }
+.taC { text-align: center !important; }
+.taR { text-align: right !important; }
+
+
+// ✅ color
+.color-red{ color: $color-red !important;}
+.color-brown{ color: $color-brown !important;}
+.color-blue{ color: $color-blue !important;}
+
+.color-point{ color: $color-point !important;}
+.color-primary{ color: $color-primary !important;}
+
+
+// ✅ flex
+.flex-1 {
+    flex: 1 0 0;
+}
+.flex-grow {
+    flex-grow: 1;
+}
+
+.flex-grow-0 {
+    flex-grow: 0;
+}
+
+.flex-shrink {
+    flex-shrink: 1;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.flex-auto {
+    flex: 1 1 auto;
+}
+
+.flex-initial {
+    flex: 0 1 auto;
+}
+
+.flex-none {
+    flex: none;
+}
+
+
+// ✅ Cursor
+.pointer { cursor: pointer; }
+
+
+// ✅ Link States
+
+// 기본 링크
+a, .link-default {
+    color: #424242;
+    text-decoration: none;
+
+    &:visited {
+        color: #666;
+    }
+
+    &:hover,
+    &.hovered {
+        color: #d51d05;
+        text-decoration: underline;
+    }
+}
+
+// 파란 링크 (명시적 정의)
+.link-blue {
+    color: blue !important;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// 밑줄 전용 클래스
+.text-under {
+    text-decoration: underline !important;
+}
+
+.text-none {
+    text-decoration: none !important;
+}

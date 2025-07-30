@@ -1,0 +1,24 @@
+// 1. 기능 모듈
+@use "sass:math";
+
+// 2. 추상화 (변수, 믹스인, 확장)
+@use "abstracts/variables" as *;
+@use "abstracts/mixins" as *;
+@use "abstracts/extend" as *;
+
+// 3. 베이스 스타일
+@use "base/reset" as *;
+@use "base/button" as *;
+@use "base/form" as *;
+@use "base/popup" as *;
+
+// 4. 유틸리티
+@use "utilities/utils" as *;
+
+// 5. 레이아웃
+@use "layout/layout" as *;
+@use "layout/common" as *;
+
+// 6. 페이지별
+@use "pages/login" as *;
+

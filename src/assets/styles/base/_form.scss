@@ -1,0 +1,223 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+// --------------------------------------------
+// form
+// --------------------------------------------
+
+/// ✅ 1. 기본 초기화
+input,
+select,
+textarea {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    outline: none;
+    @include boxSizing(border-box);
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    background-color:#fff !important;
+
+}
+
+label{
+    vertical-align: middle;
+}
+
+/// ✅ 2. 텍스트 계열 input 스타일
+.input-basic {
+
+    height:22px;
+    padding: 0 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    @include boxSizing(border-box);
+
+    width:-webkit-fill-available;
+    &::placeholder {
+        color: #aaa;
+    }
+    &:focus {
+        border-color: #d8d8d8;
+    }
+    &:disabled {
+        background-color: #f5f5f5;
+        color: #999;
+        cursor: not-allowed;
+    }
+    &:read-only {
+        background-color: #f9f9f9;
+        color: #666;
+        border-color: #ddd;
+        cursor: default;
+    }
+}
+
+/// ✅ 3. select 스타일
+.select-basic {
+    @extend .input-basic;
+    position: relative; 
+}
+
+/// ✅ 4. textarea
+.textarea-basic {
+    @extend .input-basic;
+    padding:6px;
+    height: 100px;
+    resize: none;
+}
+
+// ✅ 5. checkbox & radio (커스텀 디자인)
+// .form-check {
+//     display: inline-flex;
+//     align-items: center;
+//     cursor: pointer;
+//     font-size: 14px;
+//     gap: 6px;
+
+//     input[type="checkbox"], input[type="radio"] {
+//         appearance: none;
+//         width: 12px;
+//         height: 12px;
+//         border: 2px solid #ccc; 
+//         border-radius: 4px;
+//         background-color: #fff;
+//         position: relative;
+//         cursor: pointer;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center; 
+//         &:checked {
+//             background-color: #6c757d;
+//             border-color: #6c757d;
+//         }
+//         &:checked::after {
+//             content: '';
+//             position: absolute;
+//             top: 0;
+//             left: 5px;
+//             width: 6px; 
+//             height: 12px;
+//             border: solid #fff;
+//             border-width: 0 2px 2px 0; 
+//             transform: rotate(45deg);
+//         }
+//     }
+
+//     input[type="radio"] {
+//         border-radius: 50%;
+//         &:checked::after {
+//             content: '';
+//             position: absolute;
+//             top: 2px; 
+//             left: 2px;
+//             width: 12px;
+//             height: 12px; 
+//             background: #fff;
+//             border-radius: 50%;
+//         }
+//     }
+    
+//     label{
+//         cursor: pointer;
+//         user-select: none;
+//     }
+// }
+
+/// ✅ 6. file input (커스텀 디자인)
+.file-basic {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    input[type="file"] {
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+    }
+
+    label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        border-radius: 0;
+        background: #fff;
+        color: #666;
+        font-size: 12px;
+        min-width: 60px;
+        height:22px;
+        padding:3.5px 6px;
+        border: 1px solid #666;
+        @include boxSizing(border-box);
+    }
+    .file-name {
+        font-size: 13px;
+        color: #555;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        @extend .input-basic;
+        width: 200px;
+        line-height:20px;
+    }
+}
+
+
+// VueDatepicker
+.date-picker{
+    @include flex(row, center, center);
+    gap:5px;
+}
+.dp__main {
+    width:160px !important;
+    font-size: 12px;
+    .dp__input_wrap{
+        width:160px;
+        input.dp__input {
+            font-family: $font-pretendard;
+            
+            height: 22px;
+    
+            font-size: 14px;
+            line-height: 1;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 0;
+            @include boxSizing(border-box);
+    
+            &::placeholder {
+                color: #aaa;
+            }
+            &:focus {
+                border-color: #d8d8d8;
+            }
+            &:disabled {
+                background-color: #f5f5f5;
+                color: #999;
+                cursor: not-allowed;
+            }
+            &:read-only {
+                background-color: #f9f9f9;
+                color: #666;
+                border-color: #ddd;
+                cursor: default;
+            }
+        }
+    }
+    .dp__calendar {
+        width: 260px;
+    }
+
+}

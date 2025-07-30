@@ -1,0 +1,429 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+// --------------------------------------------
+// common
+// --------------------------------------------
+
+*{ 
+    font-family: $font-pretendard;
+    @include boxSizing(border-box);
+}
+
+
+//title
+.title-menu {
+    margin-top:30px;
+    @include flex(row, center, between);
+}
+.title {
+    &-main { 
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color:#555;
+        font-weight: bold;
+        letter-spacing: 0;
+        img {
+            margin-right: 4px;
+            margin-top:-1px;
+            width: 12px;
+            height: 13px;
+        }
+        b{
+            color:$color-point;
+            font-weight: 600;
+        }
+    }
+    &-sub { 
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color:#0079d7;
+        font-weight: bold;
+        letter-spacing: 0;
+        margin-top: 30px;
+        img {
+            margin-right: 4px;
+            margin-top:-1px;
+            width: 5px;
+            height: 9px;
+        }
+    }
+}
+
+
+//aca-list
+.aca-list-area{
+    margin-top:20px;
+    padding: 16px 12px;
+    background:$bg-color-1;
+    @include flex(row, center, between);
+    gap:10px;
+    flex-wrap: wrap;
+    .aca-list {
+        width:100%;
+        @include flex(row, start, start);
+        gap:8px;
+        div {
+            word-break: keep-all;
+            @include flex(row, start, start);
+            gap:8px;
+            font-size: 14px;
+            flex-wrap: wrap;
+            a {
+                cursor: pointer;
+                position: relative;
+            }
+            .divider {
+                margin: 0;
+                color: #999;
+                user-select: none;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+
+//search
+.search-area{
+    margin-top:20px;
+    padding: 16px 12px;
+    background:$bg-color-1;
+    font-size: 14px;
+    &-inner{
+        @include flex(row, center, start);
+        flex-wrap: wrap;
+        gap:12px;
+        .dis-flex{
+            word-break: keep-all;
+            @include flex(row, center, start);
+            gap:5px;
+            white-space: nowrap;
+        }
+    }
+}
+
+// summary
+.summary-area{
+    margin-top: 30px;
+    @include flex(row, center, between);
+    .dis-flex{
+        word-break: keep-all;
+        @include flex(row, center, start);
+        gap:5px;
+        white-space: nowrap;
+    }
+}
+
+//numbering-box 
+.numbering-box{
+    font-size: 14px;
+    font-weight: normal;
+    line-height:1.2;
+    @include flex(row, center, end);
+    strong{
+        font-weight: 600;
+    }
+    b{
+        color:$color-point;
+        font-weight: 600;
+    }
+}
+
+//paging
+.paging-box {
+    padding: 15px 0;
+    gap: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+    @include flex(row, center, center);
+
+    margin-top: 20px;
+    li {
+        display: inline-block;
+        &.disabled {
+            a {
+                pointer-events: none;
+                color: #ccc;
+                cursor: default;
+            }
+            span {
+                color: #ccc;
+            }
+        }
+        a, span {
+            display: inline-block;
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+            min-width: 25px;
+
+            &.first {
+                margin-right: 4px;
+            }
+            &.last {
+                margin-left: 4px;
+            }
+            &.current {
+                font-weight: bold;
+                color: $color-point;
+                text-decoration: underline;
+                min-width: 25px;
+            }
+        }
+
+    }
+}
+
+
+//table
+.table-area{
+    margin-top: 10px;
+}
+
+table{
+    width:100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    &.auto{
+        table-layout: auto;
+    }
+    &.fixed{
+        table-layout: fixed;
+    }
+
+    th, td{
+        font-size: 14px;
+        line-height:1.2;
+    }
+    td{
+        &.blue{
+            background:#f6fafe !important;
+        }
+        b{
+            color:$color-primary;
+        }
+    }
+    
+    .dis-flex{
+        word-break: keep-all;
+        @include flex(row, center, start);
+        gap:5px;
+        white-space: nowrap;
+        &.center{
+            @include flex(row, center, center);
+        }
+        &.wrap{
+            flex-wrap: wrap;
+        }
+    }
+    
+    .dis-flex-col{
+        word-break: keep-all;
+        @include flex(column, start, start);
+        gap:16px;
+        white-space: nowrap;
+    }
+
+    .noti{
+        font-size: 13px;
+    }
+
+    //list page table
+    &.type-1{
+        border-top:2px solid #4899ee; 
+        border-bottom:1px solid #d7d7d7;
+        tr{
+            &.hot{
+                td{
+                    background-color:#ECF5FD;
+                }
+            }
+        }
+        th,td{
+            border-top:1px solid #d7d7d7; 
+            border-right:1px solid #d7d7d7; 
+            background:#fff; 
+            padding:8px 4px;
+            text-align: center;
+            &.taL{
+                text-align: left;
+            }
+            &.taR{
+                text-align: right;
+            }
+        }
+        th{
+            font-weight:bold; 
+            background:#f1f1f1;
+        }
+    }
+
+    //write page table
+    &.type-2{
+        border-top:2px solid #4899ee; 
+        border-bottom:1px solid #d7d7d7;
+        tr{
+            &.hot{
+                td{
+                    background-color:#ECF5FD;
+                }
+            }
+        }
+        th,td{
+            border-top:1px solid #d7d7d7; 
+            border-right:1px solid #d7d7d7; 
+            background:#fff; 
+            padding:8px 12px;
+            &.left{
+                text-align: left;
+            }
+            &.right{
+                text-align: right;
+            }
+        }
+        th{
+            text-align: center;
+            font-weight:bold; 
+            background:#f1f1f1;
+        }
+        td{
+            text-align: left;
+        }
+    }
+
+    //table > table
+    &.type-3{
+        border:1px solid #d7d7d7;
+        tr{
+            &.hot{
+                td{
+                    background-color:#ECF5FD;
+                }
+            }
+        }
+        th,td{
+            background:#fff; 
+            padding:8px 8px;
+            text-align: center;
+            &.left{
+                text-align: left;
+            }
+            &.right{
+                text-align: right;
+            }
+        }
+        th{
+            font-weight:bold; 
+            background:#f1f1f1;
+        }
+    }
+
+}
+
+// .text-area{
+// }
+
+
+// --------------------------------------------
+// page
+// --------------------------------------------
+
+// /admin
+.column-area {
+    @include flex(row, stretch, start);
+    gap: 30px;
+    .column-2 {
+        flex: 0 0 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+        display: flex;
+        flex-direction: column;
+    }
+    .table-area {
+        .table-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            form{
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            table{
+                flex:1;
+            }
+        }
+    }    
+}
+
+// /member/member-list
+.member {
+    cursor: default;
+    color: #fff;
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    &.type1{
+        background:#002060;
+    }
+    &.type2{
+        background:#A6A6A6;
+    }
+}
+
+// /notice/campus-notice-write
+.fair-info-area{
+    > div{
+        padding:10px 0;
+    }
+    .dis-flex{
+        @include flex(row, center, between);
+        margin-bottom:10px;
+    }
+    .fair-info-notice{
+        border-top:1px solid $border-color-1;
+    }
+}
+
+
+table{
+    .show-list{
+        width: 100%;
+        align-items: initial;
+        border-top:1px solid $border-color-1;
+        padding-top: 12px;
+        &:first-child{
+            border-top:none !important;
+        }
+        .campus{
+            min-width:140px;
+            b{
+                color: $color-blue;
+            }
+        }
+        .path{
+            ul.dis-flex{
+                flex-direction: column;
+                align-items: baseline;
+            }   
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,155 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+// --------------------------------------------
+// button
+// --------------------------------------------
+
+.btn-align{
+	margin-top: 10px;
+	@include flex(row, center, end);
+	gap: 10px;
+	&.start{
+		justify-content: start !important;
+	}
+	&.between{
+		justify-content: space-between !important;
+	}
+	& + .btn-align {
+		margin-top: 12px;
+	}
+}
+
+.btn-box{
+	@include flex(row, center, start);
+	flex-wrap: wrap;
+	gap:5px;
+	&.center{
+		justify-content: center !important;
+
+	}
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: none;
+	font: inherit;
+	color: inherit;
+	outline: none;
+	@include boxSizing(border-box);
+}
+
+
+.btn {
+	border: none;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+	border-radius: 0;
+	line-height:1;
+	transition: all 0.3s ease;
+    @include boxSizing(border-box);
+	// disabled
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	// 🎨 Variant
+	&-primary {
+		position: relative;
+		background:#fff;
+		color: #666;
+		overflow: hidden;
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border: 1px solid #666;
+			border-radius: 0;
+			pointer-events: none;
+			@include boxSizing(border-box);
+		}
+	}
+
+	&-secondary {
+		background-color: #6c757d;
+		color: #fff;
+		&:hover {
+			background-color: #545b62;
+		}
+		&.is-active {
+			background-color: #3d4349;
+		}
+	}
+
+	&-danger {
+		background-color: #dc3545;
+		color: #fff;
+		&:hover {
+			background-color: #b52a37;
+		}
+		&.is-active {
+			background-color: #8a1f2c;
+		}
+	}
+
+	&-outline {
+		position: relative;
+		background-color: transparent;
+		color: #007bff;
+		overflow: hidden;
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border: 2px solid #007bff;
+			border-radius: 6px;
+			pointer-events: none;
+			@include boxSizing(border-box);
+		}
+		&:hover {
+			background-color: #007bff;
+			color: #fff;
+			&::before {
+				border-color: transparent;
+			}
+		}
+		&.is-active {
+			background-color: #0056b3;
+			color: #fff;
+	
+			&::before {
+				border-color: transparent;
+			}
+			transform: scale(0.98);
+		}
+	}
+	// 🔠 Size
+	&-size-small {
+		font-size: 12px;
+		padding: 4px 10px;
+		min-width:40px;
+		height:22px;
+	}
+	&-size-medium {
+		font-size: 14px;
+		padding: 8px 18px;
+	}
+	&-size-large {
+		font-size: 16px;
+		padding: 12px 26px;
+	}
+
+	// 아이콘 여백
+	i,
+	svg {
+		margin: 0 4px;
+		
+	}
+}
